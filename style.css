@@ -65,3 +65,53 @@
     background: rgb(211, 211, 211, .3);
 }
 
+.form-container {
+    width: 275px;
+    height: 375px;
+    border-radius: 8px;
+    margin-left: 600px;
+    background-color: #d3d3d3;
+}
+
+.form-container > p {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 1.3rem;
+    font-weight: bolder;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 20px;
+    margin-top: 30px;
+    gap: 20px;
+}
+
+#title, #author, #pages {
+    width: 70%;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: transparent;
+}
+
+#sbt-btn {
+    width: 86%;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: transparent;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+#sbt-btn:hover {
+    transform: scale(1.1);
+    background-color: #73b504;
+}
+
+#read-checker {
+    position: relative;
+    top: 1.5px;
+    margin-left: 10px;
+}
