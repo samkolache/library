@@ -5,10 +5,12 @@ const overlay = document.getElementById('overlay');
 const title = document.getElementById('title');
 const author = document.getElementById('author');
 const pages = document.getElementById('pages');
+const read = document.getElementById('read-checker');
 const submitBtn = document.getElementById('sbt-btn');
 const cancelBtn = document.getElementById('cnl-btn');
 const books = document.getElementById('books');
 let myLibrary = [];
+let readAnswer = ''
 
 
 //form validation and object creation
@@ -17,38 +19,70 @@ form.addEventListener('submit', e => {
     formValidation();
 
     //creation of a book object
-    let newBook = new Book(title.value, author.value, pages.value);
+    if(read.checked) {
+        readAnswer = "Read"
+    }else {
+        readAnswer = "Not Read"
+    }
+    let newBook = new Book(title.value, author.value, pages.value, readAnswer);
     addBookToLibrary(newBook);
 
     //to add books to library
     function addBookToLibrary(book) {
         myLibrary.push(book);
-        newBook = {};
+        displayBooksOnPage();
     }
     //constructor
-    function Book(title, author, pages) {
+    function Book(title, author, pages, read) {
         this.title = title;
         this.author = author;
         this.pages = pages;
+        this.read = read;
     }
     document.forms[0].reset();
-    console.log(myLibrary)
-    displayBooksOnPage();
 })
 
 function displayBooksOnPage() {
 
+    //remove cards that already have been made
+    const removeDivs = document.querySelectorAll('.card')
+    for(let i = 0; i < removeDivs.length; i++) {
+        removeDivs[i].remove();
+    }
+
     //loop over the library to make cards
-    myLibrary.forEach(myLibrary => {
+    let index = 0;
+    myLibrary.forEach(myLibrarys => {
         const card = document.createElement('div');
         card.classList.add('card');
         books.appendChild(card);
-        for(let key in myLibrary) {
-            console.log(`${key}: ${myLibrary[key]}`)
+
+        for(let key in myLibrarys) {
             const para = document.createElement('p');
-            para.textContent = (`${key}: ${myLibrary[key]}`);
+            para.textContent = (`${myLibrarys[key]}`);
             card.appendChild(para);
         }
+
+         //create remove button
+         const removeButton = document.createElement('button');
+         removeButton.classList.add('remove-button');
+         removeButton.textContent = "Remove"
+         console.log(myLibrary);
+ 
+         //link data-attribute of removeButton to the array and card
+         removeButton.dataset.linkedArray = index;
+         index++;
+         card.appendChild(removeButton);
+
+         //event listener to remove button
+         removeButton.addEventListener('click', removeBookFromLibrary)
+
+         function removeBookFromLibrary() {
+            let bookToDelete = removeButton.dataset.linkedArray;
+            myLibrary.splice(parseInt(bookToDelete), 1);
+            card.remove();
+            displayBooksOnPage();
+         }
 
     })
 }
