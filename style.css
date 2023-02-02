@@ -14,6 +14,7 @@
     display: flex;
     justify-content:space-between;
     align-items: center;
+    transition: filter 0ms ease-in-out 0ms;
 }
 
 .header > p {
@@ -34,13 +35,13 @@
 }
 
 .header > button:hover {
-    transform: scale(1.1)
+    transform: scale(1.1);
 }
 
 .main-content {
     width: 100vw;
     height: 100vh;
-    background-color: rgb(0,0,0,.9)
+    background-color: rgb(0,0,0,.9);
 
 }
 
@@ -51,7 +52,7 @@
 
 .opening > button {
     font-size: 1.5rem;
-    margin-top: 40px;
+    margin-top: 20px;
     padding: 14px 20px;
     border-radius: 8px;
     border: 1px solid transparent;
@@ -67,11 +68,25 @@
 
 .form-container {
     width: 275px;
-    height: 375px;
+    height: 440px;
     border-radius: 8px;
-    margin-left: 600px;
     background-color: #d3d3d3;
+    z-index: 10;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    box-shadow: 5px 10px 18px #888888;
 }
+
+.form-container.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+
+
+
 
 .form-container > p {
     text-align: center;
@@ -109,9 +124,42 @@ form {
     transform: scale(1.1);
     background-color: #73b504;
 }
+#cnl-btn {
+    width: 86%;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: transparent;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+#cnl-btn:hover {
+    transform: scale(1.1);
+    background-color: red;
+}
 
 #read-checker {
     position: relative;
     top: 1.5px;
     margin-left: 10px;
 }
+
+/*Javascript Classes */
+
+#overlay {
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(0, 0, 0, 0.5);
+    transition: 200ms ease-in-out;
+    pointer-events: none;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+

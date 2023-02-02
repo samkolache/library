@@ -16,7 +16,7 @@
         <div class="opening">
             <button id="add-book">+ Add Book</button>
         </div>
-        <div class="form-container">
+        <div class="form-container" id="form">
             <p class = "title">Add New Book</p>
             <form action="">
                 <input type="text" placeholder="Book Title" id="title">
@@ -24,10 +24,11 @@
                 <input type="number" placeholder="Pages" id="pages">
                 <label for="read-checker">Have you read it?  <input type="checkbox" name="read-checker" id="read-checker"></label>
                 <button type="submit" id="sbt-btn">Submit</button>
+                <button type="button" id="cnl-btn">Close</button>
             </form>
         </div>
     </div>
-
+    <div id="overlay"></div>
     <script src="script.js"></script>
 </body>
 </html>
