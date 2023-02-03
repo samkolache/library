@@ -2,6 +2,11 @@
     margin: 0;
     padding: 0;
     font-family: 'Poppins';
+    box-sizing: border-box;
+}
+
+.body {
+    height: 100%;
 }
 
 
@@ -40,6 +45,7 @@
 .main-content {
     width: 100vw;
     height: 100vh;
+    background-size: contain;
     background-color: rgb(0,0,0,.9);
 
 }
@@ -105,7 +111,7 @@ input:focus {
 
 
 #title, #author, #pages {
-    width: 70%;
+    width: 90%;
     padding: 12px 20px;
     border-radius: 8px;
     border-style: solid;
@@ -154,23 +160,38 @@ input:focus {
 
 .book {
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-column: 2 / 3;
     margin-left: 100px;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 50px;
 }
 
 .card {
-    height: 350px;
+    height: 300px;
     width: 250px;
     border-radius: 8px;
     background-color: white;
     display: flex;
     align-items: center;
+    justify-content: space-around;
     flex-direction: column;
 }
 
 .card > p {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.remove-button {
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: transparent;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.remove-button:hover {
+    background-color: red;
 }
 
 /*Javascript Classes */
