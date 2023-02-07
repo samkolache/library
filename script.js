@@ -91,7 +91,6 @@ function displayBooksOnPage() {
             card.remove();
             displayBooksOnPage();
          }
-
     })
 }
 

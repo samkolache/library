@@ -117,13 +117,6 @@ input:focus {
     border-style: solid;
 }
 
-.error {
-    border-color: red;
-}
-
-.success {
-    border-color: green;
-}
 
 #sbt-btn {
     width: 86%;
@@ -211,6 +204,10 @@ input:focus {
 #overlay.active {
     opacity: 1;
     pointer-events: all;
+}
+
+.read-button {
+    
 }
 
 
